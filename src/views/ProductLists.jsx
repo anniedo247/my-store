@@ -38,6 +38,7 @@ const ProductLists = () => {
                     display: 'flex',
                     justifyContent: 'center',
                   }}
+                  key={item.id}
                 >
                   <ProductCard product={item} />
                 </Col>

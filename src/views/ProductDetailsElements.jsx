@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 60px 100px;
+  padding: 60px 150px;
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -9,10 +9,9 @@ export const Container = styled.div`
 `;
 export const Flex = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.columns ? 'columns' : 'rows')};
+  width: 100%;
 `;
 
-export const Images = styled.div``;
 export const Tag = styled.div`
   color: ${(props) => (props.white ? 'white' : '#a84e32')};
   border: ${(props) => (props.outlined ? '1px solid #a84e32' : null)};
@@ -23,4 +22,9 @@ export const Tag = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const ProductInformation = styled(Flex)``;
+
+export const ProductQty = styled.div`
+display:grid;
+grid-template-columns: repeat(2,1fr);
+`;
+

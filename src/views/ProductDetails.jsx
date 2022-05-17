@@ -3,15 +3,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
-import ReactStars from 'react-rating-stars-component';
+import ProductInformation from '../components/ProductInformation';
 
-import {
-  Container,
-  Images,
-  Tag,
-  Flex,
-  ProductInformation,
-} from './ProductDetailsElements';
+import { Container, Tag, Flex } from './ProductDetailsElements';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -23,7 +17,7 @@ const ProductDetails = () => {
       url: `http://localhost:3000/products/${id}`,
     })
       .then((response) => {
-        console.log(response.data.small_image.url);
+        console.log(response.data);
         setProduct(response.data);
       })
       .catch((err) => {
@@ -38,14 +32,24 @@ const ProductDetails = () => {
   ];
   return (
     <Container>
-      <Images>
+      <div>
         <ImageGallery
           items={images}
           thumbnailPosition='left'
           showPlayButton={false}
         />
-      </Images>
-      
+      </div>
+      <div>
+        <Flex style={{ gap: '5px' }}>
+          <Tag white green small>
+            Sale
+          </Tag>
+          <Tag outlined>Ready To Ship</Tag>
+        </Flex>
+        <ProductInformation product={product} />
+      </div>
+
+      {id}
     </Container>
   );
 };

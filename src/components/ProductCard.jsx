@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className='rating'>
-          <ReactStars count={5} size={15} activeColor='#a84e32' />
+          <ReactStars count={5} size={15} isHalf={true} value = {product.rating_summary} activeColor='#a84e32' />
           <BsHeart />
         </div>
       </Body>
