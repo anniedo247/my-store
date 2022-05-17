@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import ProductInformation from '../components/ProductInformation';
-
+import ProductQuantity from '../components/ProductQuantity';
 import { Container, Tag, Flex } from './ProductDetailsElements';
 
 const ProductDetails = () => {
@@ -47,9 +47,8 @@ const ProductDetails = () => {
           <Tag outlined>Ready To Ship</Tag>
         </Flex>
         <ProductInformation product={product} />
+        <ProductQuantity />
       </div>
-
-      {id}
     </Container>
   );
 };

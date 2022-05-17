@@ -23,8 +23,5 @@ export const Tag = styled.div`
   justify-content: center;
 `;
 
-export const ProductQty = styled.div`
-display:grid;
-grid-template-columns: repeat(2,1fr);
-`;
+
 

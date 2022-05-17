@@ -8,6 +8,10 @@ export const Container = styled(Flex)`
   padding: 20px 0px;
   flex-direction: column;
   align-items: start;
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
   .price {
     margin-top: 20px;
     display: flex;
