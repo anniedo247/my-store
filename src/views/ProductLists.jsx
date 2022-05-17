@@ -30,7 +30,7 @@ const ProductLists = () => {
             products.map((item) => {
               return (
                 <Col
-                  xl={4}
+                  xl={5}
                   lg={6}
                   md={8}
                   xs={12}
