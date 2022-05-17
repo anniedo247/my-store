@@ -17,9 +17,9 @@ export const Container = styled(Flex)`
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 30px;
+    font-size: 20px;
     width: 100%;
-    height: 60px;
+    height: 40px;
     background-color: #ded9d9;
     padding-left: 10px;
   }

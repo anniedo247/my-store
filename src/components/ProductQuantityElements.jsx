@@ -44,6 +44,7 @@ export const Button = styled.button`
   background-color: transparent;
   border: 1px solid black;
   border-radius: 50%;
+  cursor: pointer;
 `;
 export const Input = styled.input`
   width: 80px;

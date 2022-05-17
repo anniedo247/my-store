@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Quantity,
@@ -8,15 +8,15 @@ import {
   Input,
 } from './ProductQuantityElements';
 
-const ProductQuantity = () => {
+const ProductQuantity = ({ quantity,SubtractItemHandler, AddItemHandler }) => {
   return (
     <Container>
       <Quantity>
         <p className='title'>Quantity (Box)</p>
         <Flex style={{ gap: '10px' }}>
-          <Button>-</Button>
-          <Input value={0} />
-          <Button>+</Button>
+          <Button onClick={SubtractItemHandler}>-</Button>
+          <Input value={quantity} />
+          <Button onClick={AddItemHandler}>+</Button>
         </Flex>
         <ul>
           <li>Minimum orders 1 Box</li>
