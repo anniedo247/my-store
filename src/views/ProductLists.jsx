@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import  ProductService from '../apiServices';
 import { Row, Col } from 'antd';
 import ProductCard from '../components/ProductCard';
 import {Header} from './ProductListsElement'
@@ -8,13 +9,9 @@ const ProductLists = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/products',
-    })
-      .then((response) => {
-        setProducts(response.data);
-        console.log(response.data);
+    ProductService.getProductList().then((data) => {
+        setProducts(data);
+        console.log(data);
       })
       .catch((err) => {
         console.error(err);

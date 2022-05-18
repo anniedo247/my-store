@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import ProductService from '../apiServices';
 import { Tabs } from 'antd';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
@@ -14,6 +14,16 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    ProductService.getProductDetails(id)
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
   const SubtractItemHandler = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -24,19 +34,7 @@ const ProductDetails = () => {
   const AddItemHandler = () => {
     setQuantity(quantity + 1);
   };
-  useEffect(() => {
-    axios({
-      method: 'get',
-      url: `http://localhost:3000/products/${id}`,
-    })
-      .then((response) => {
-        console.log(response.data);
-        setProduct(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [id]);
+
   const images = [
     {
       original: product?.small_image?.url,
