@@ -17,8 +17,12 @@ const ProductInformation = ({ product }) => {
             value={product.rating_summary}
             activeColor='#a84e32'
           />
+
           <span>
-            {product && product.review_count !== 0 ? product?.review_count : '0'} Reviews
+            {product && product.review_count !== 0
+              ? product?.review_count
+              : '0'}{' '}
+            Reviews
           </span>
           <Divider type='vertical' />
           <span> {new Intl.NumberFormat().format(2670)} Sold</span>

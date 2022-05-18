@@ -8,7 +8,12 @@ import {
   Input,
 } from './ProductQuantityElements';
 
-const ProductQuantity = ({ quantity,SubtractItemHandler, AddItemHandler }) => {
+const ProductQuantity = ({
+  product,
+  quantity,
+  SubtractItemHandler,
+  AddItemHandler,
+}) => {
   return (
     <Container>
       <Quantity>
@@ -20,13 +25,13 @@ const ProductQuantity = ({ quantity,SubtractItemHandler, AddItemHandler }) => {
         </Flex>
         <ul>
           <li>Minimum orders 1 Box</li>
-          <li>Stock Available</li>
+          <li>Stock Available 100 Boxes</li>
         </ul>
       </Quantity>
       <SubTotal>
         <p className='title'>SubTotal (THB)</p>
         <div>
-          <b>THB</b> 10,0000.00
+          <b>THB</b> {quantity * product?.price?.regularPrice?.amount.value}
         </div>
       </SubTotal>
     </Container>

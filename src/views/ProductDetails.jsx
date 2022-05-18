@@ -18,7 +18,7 @@ const ProductDetails = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     } else {
-      setQuantity(1)
+      setQuantity(1);
     }
   };
   const AddItemHandler = () => {
@@ -44,7 +44,7 @@ const ProductDetails = () => {
     },
   ];
   return (
-    <div style={{padding: "60px 150px"}}>
+    <div style={{ padding: '60px 150px' }}>
       <Container>
         <div>
           <ImageGallery
@@ -63,6 +63,7 @@ const ProductDetails = () => {
           <ProductInformation product={product} />
           <ProductQuantity
             quantity={quantity}
+            product={product}
             SubtractItemHandler={SubtractItemHandler}
             AddItemHandler={AddItemHandler}
           />

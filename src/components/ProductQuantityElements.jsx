@@ -16,7 +16,7 @@ export const Quantity = styled(Flex)`
   flex-direction: column;
   align-items: start;
   ul {
-    padding: 0;
+    padding: 0 10px;
     text-align: left;
     margin-top: 30px;
     color: #cacaca;
@@ -29,11 +29,11 @@ export const SubTotal = styled(Flex)`
   div {
     display: flex;
     align-items: center;
-    padding:10px;
+    padding: 10px;
     justify-content: start;
     background-color: #ded9d9;
     width: 100%;
-    height: 30px;    
+    height: 30px;
   }
 `;
 
