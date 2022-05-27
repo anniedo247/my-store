@@ -8,17 +8,23 @@ import {
   Input,
 } from './ProductQuantityElements';
 
-const ProductQuantity = ({
-  product,
+interface ProductQuantity {
+  price: number;
+  quantity: number;
+  SubtractItemHandler: () => void;
+  AddItemHandler: () => void;
+}
+const ProductQuantity: React.FC<ProductQuantity> = ({
+  price,
   quantity,
   SubtractItemHandler,
   AddItemHandler,
 }) => {
   return (
     <Container>
-      <Quantity>
+      <Quantity column>
         <p className='title'>Quantity (Box)</p>
-        <Flex style={{ gap: '10px' }}>
+        <Flex column={false} style={{ gap: '10px' }}>
           <Button onClick={SubtractItemHandler}>-</Button>
           <Input value={quantity} />
           <Button onClick={AddItemHandler}>+</Button>
@@ -28,10 +34,10 @@ const ProductQuantity = ({
           <li>Stock Available 100 Boxes</li>
         </ul>
       </Quantity>
-      <SubTotal>
+      <SubTotal column>
         <p className='title'>SubTotal (THB)</p>
         <div>
-          <b>THB</b> {quantity * product?.price?.regularPrice?.amount.value}
+          <b>THB</b> <span>{price && price * quantity}</span>
         </div>
       </SubTotal>
     </Container>

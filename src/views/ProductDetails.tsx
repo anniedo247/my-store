@@ -7,17 +7,20 @@ import ImageGallery from 'react-image-gallery';
 import ProductInformation from '../components/ProductInformation';
 import ProductQuantity from '../components/ProductQuantity';
 import { Container, Tag, Flex, Button } from './ProductDetailsElements';
+import { ProductInfo } from '../types';
+import { ReactImageGalleryItem } from 'react-image-gallery';
 
 const ProductDetails = () => {
   const { TabPane } = Tabs;
   const { id } = useParams();
-  const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState<ProductInfo>();
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
     ProductService.getProductDetails(id)
       .then((data) => {
         setProduct(data);
+        console.log(data);
       })
       .catch((err) => {
         console.error(err);
@@ -35,9 +38,9 @@ const ProductDetails = () => {
     setQuantity(quantity + 1);
   };
 
-  const images = [
+  const images: ReactImageGalleryItem[] = [
     {
-      original: product?.small_image?.url,
+      original: product?.small_image?.url || '',
       thumbnail: product?.small_image?.url,
     },
   ];
@@ -53,21 +56,23 @@ const ProductDetails = () => {
         </div>
         <div>
           <Flex style={{ gap: '5px' }}>
-            <Tag white green small>
+            <Tag isGreenTag width='80px'>
               Sale
             </Tag>
-            <Tag outlined>Ready To Ship</Tag>
+            <Tag color='#a84e32' outlined width='190px'>
+              Ready To Ship
+            </Tag>
           </Flex>
-          <ProductInformation product={product} />
+          <ProductInformation {...product} />
           <ProductQuantity
             quantity={quantity}
-            product={product}
+            price={product?.price.regularPrice.amount.value || 0}
             SubtractItemHandler={SubtractItemHandler}
             AddItemHandler={AddItemHandler}
           />
           <Flex style={{ justifyContent: 'space-between' }}>
-            <Button>Add to Cart</Button>
-            <Button gray white>
+            <Button color='#373433'>Add to Cart</Button>
+            <Button color='white' isGray>
               Buy now
             </Button>
           </Flex>

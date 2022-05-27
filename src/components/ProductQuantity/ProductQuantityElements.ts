@@ -8,12 +8,14 @@ export const Container = styled.div`
     font-weight: bold;
   }
 `;
-export const Flex = styled.div`
+interface FlexProps {
+  column: boolean;
+}
+export const Flex = styled.div<FlexProps>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
 `;
 export const Quantity = styled(Flex)`
-  flex-direction: column;
   align-items: start;
   ul {
     padding: 0 10px;
@@ -24,7 +26,6 @@ export const Quantity = styled(Flex)`
   }
 `;
 export const SubTotal = styled(Flex)`
-  flex-direction: column;
   align-items: start;
   div {
     display: flex;
@@ -34,6 +35,9 @@ export const SubTotal = styled(Flex)`
     background-color: #ded9d9;
     width: 100%;
     height: 30px;
+  }
+  span {
+    margin-left: 8px;
   }
 `;
 

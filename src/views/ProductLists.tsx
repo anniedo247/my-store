@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import  ProductService from '../apiServices';
+import ProductService from '../apiServices';
 import { Row, Col } from 'antd';
 import ProductCard from '../components/ProductCard';
-import {Header} from './ProductListsElement'
+import { Header } from './ProductListsElement';
+import { Product } from './../types';
 
-const ProductLists = () => {
-  const [products, setProducts] = useState([]);
+const ProductLists: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    ProductService.getProductList().then((data) => {
+    ProductService.getProductList()
+      .then((data) => {
         setProducts(data);
         console.log(data);
       })
@@ -37,7 +38,7 @@ const ProductLists = () => {
                   }}
                   key={item.id}
                 >
-                  <ProductCard product={item} />
+                  <ProductCard {...item} />
                 </Col>
               );
             })}

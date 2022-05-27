@@ -1,12 +1,12 @@
-import React from 'react';
-import { CardWrapper, Body, Header } from './ProductCardElement.jsx';
-import ReactStars from 'react-rating-stars-component';
+import React, { useState } from 'react';
+import { CardWrapper, Body, Header } from './ProductCardElement';
+import ReactStars from 'react-star-rating-component';
 import { BsHeart } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { Product } from '../../types';
 
-const ProductCard = ({ product }) => {
+const ProductCard: React.FC<Product> = (product: Product) => {
   const navigate = useNavigate();
-
   return (
     <CardWrapper
       hoverable
@@ -27,7 +27,12 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className='rating'>
-          <ReactStars count={5} size={15} isHalf={true} value = {product.rating_summary} activeColor='#a84e32' />
+          <ReactStars
+            name='rating'
+            starCount={5}
+            value={product.rating_summary}
+            starColor='#a84e32'
+          />
           <BsHeart />
         </div>
       </Body>
